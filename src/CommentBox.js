@@ -8,14 +8,19 @@ class CommentBox extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    const comment = this.commentInput.value
-    store.dispatch({ type:'ADD_COMMENT',comment})
+    const text = this.commentInput.value
+    let { postId } = this.props
+    store.dispatch({ type:'ADD_COMMENT',text,postId})
 
     this.commentInput.value = ''
   }
   render() {
-    let commentList = this.props.comments.slice().reverse().map((item,i) => (
-      <li key={i}> {item} </li>
+    const { postId } = this.props
+    let thisComments = this.props.comments.filter(item =>(
+      item.post === postId
+    ))
+    let commentList = thisComments.slice().reverse().map((item,i) => (
+      <li key={i}> {item.text} </li>
     ))
     let commentForm = (
       <form onSubmit={this.handleSubmit}>
