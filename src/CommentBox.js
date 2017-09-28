@@ -37,6 +37,6 @@ class CommentBox extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-  comments:state
+  comments:state.comments
 })
 export default connect(mapStateToProps)(CommentBox)

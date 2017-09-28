@@ -7,7 +7,7 @@ class PostBody extends Component {
     return (
       <div className='post-body'>
         <div className='comment-no'>
-          {this.props.comments.length}评论        
+          {this.props.comments.length}评论
         </div>
       </div>
     )
@@ -15,6 +15,6 @@ class PostBody extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  comments:state
+  comments:state.comments
 })
 export default connect(mapStateToProps)(PostBody)
